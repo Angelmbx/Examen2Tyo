@@ -30,7 +30,7 @@ fun Ej1ContadoresScreen(numContadores: Int) {
 
             Row(
                 Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.Center
+                horizontalArrangement = Arrangement.Center,
             ){
                 Button(onClick = { contador--}) {
                     Text(text = "Decrementar")

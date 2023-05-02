@@ -3,6 +3,7 @@ package com.example.examen2tyo.screens.EJ1
 import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -46,8 +47,11 @@ fun Screen1() {
     {padding->
 
         Column(
-            Modifier.fillMaxSize(),
-            horizontalAlignment = Alignment.CenterHorizontally) {
+            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(paddingValues = padding),
+        ) {
             if (numContadores==0){
 
                 Ej1TextFieldScreen(/*la creo aquí, se la paso a esta funcion?*/ onUpdateNumContadores= {numContadores=it})
