@@ -21,7 +21,7 @@ class ContadoresViewModel: ViewModel() {
         _texto = newText
     }
 
-    fun onUpdateNumContadores(newNumber : Int) {
+    fun onUpdateNumContadores(newNumber : Int) { //puede estar aqui el error?
         _numContadores = newNumber
     }
 
