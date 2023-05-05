@@ -8,6 +8,8 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.examen2tyo.ui.StateHolders.ContadoresViewModel
 import com.example.examen2tyo.ui.navigation.Navigation
 import com.example.examen2tyo.ui.theme.Examen2TyoTheme
 

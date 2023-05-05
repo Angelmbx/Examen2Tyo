@@ -25,4 +25,15 @@ class ContadoresViewModel: ViewModel() {
         _numContadores = newNumber
     }
 
+    fun onIncreaseCounter (){
+        _contador++
+    }
+
+    fun onDecreaseCounter(){
+        _contador--
+    }
+
+    fun onRefreshButton(){
+        _numContadores = 0
+    }
 }

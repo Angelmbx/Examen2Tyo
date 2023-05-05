@@ -35,7 +35,7 @@ fun Screen1() {
                 title = { Text(text = stringResource(id = R.string.app_name))},
                 actions= {
                     if (ContadoresViewModel.numContadores != 0) {
-                        IconButton(onClick = { ContadoresViewModel.numContadores==0 }) {
+                        IconButton(onClick = { ContadoresViewModel.onRefreshButton() }) {
                             Icon(
                                 imageVector = Icons.Filled.Refresh,
                                 contentDescription = "Go back to main screen"

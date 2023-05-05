@@ -11,6 +11,7 @@ import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.examen2tyo.ui.StateHolders.ContadoresViewModel
 
@@ -29,11 +30,11 @@ fun ContadoresScreen() {
                 horizontalArrangement = Arrangement.SpaceEvenly,
 
             ){
-                Button(onClick = { ContadoresViewModel.contador-1}) {
+                Button(onClick = { ContadoresViewModel.onDecreaseCounter()}) {
                     Text(text = "Decrementar")
                 }
                 Text(text = "${ContadoresViewModel.contador}")
-                Button(onClick = { ContadoresViewModel.contador+1}) {
+                Button(onClick = { ContadoresViewModel.onIncreaseCounter()}) {
                     Text(text = "Incrementar")
                 }
             }
