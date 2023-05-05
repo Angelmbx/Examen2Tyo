@@ -55,7 +55,7 @@ fun Screen1() {
         ) {
             if (ContadoresViewModel.numContadores==0){
 
-                TextFieldScreen( onUpdateNumContadores= {})
+                TextFieldScreen()
         } else {
             repeat(ContadoresViewModel.numContadores) {
                 ContadoresScreen()
