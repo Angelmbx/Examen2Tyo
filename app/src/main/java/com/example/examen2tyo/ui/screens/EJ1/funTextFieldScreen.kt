@@ -42,7 +42,7 @@ fun TextFieldScreen() {
                 ContadoresViewModel.onUpdateNumContadores(ContadoresViewModel.texto.toIntOrNull() ?: 0) //error?
                 ContadoresViewModel.texto == ""
             } else
-                Toast.makeText(context,"Debes introducir un número",Toast.LENGTH_SHORT).show()
+                Toast.makeText(context," Debes introducir un número",Toast.LENGTH_SHORT).show()
             }) {
             Text(text = "Mostrar contadores")
         }
