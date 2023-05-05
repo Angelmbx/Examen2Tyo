@@ -35,5 +35,6 @@ class ContadoresViewModel: ViewModel() {
 
     fun onRefreshButton(){
         _numContadores = 0
+        _texto=""
     }
 }
