@@ -56,12 +56,17 @@ fun Screen1() {
         ) {
             if (ContadoresViewModel.numContadores == 0) {
                 TextFieldScreen(
+                    texto = ContadoresViewModel.texto,
                     onTextFieldChange = {ContadoresViewModel.onTextFieldChange(it)},
-                    onUpdateNumContadores = ,
+                    onUpdateNumContadores = {ContadoresViewModel.onUpdateNumContadores(ContadoresViewModel.texto.toInt())} ,
                 )
             } else {
                 repeat(ContadoresViewModel.numContadores) {
-                    ContadoresScreen()
+                    ContadoresScreen(
+                        contador = ContadoresViewModel.contador,
+                        onDecreaseCounter = {ContadoresViewModel.onDecreaseCounter()},
+                        onIncreaseCounter = {ContadoresViewModel.onIncreaseCounter()}
+                    )
                 }
 
             }

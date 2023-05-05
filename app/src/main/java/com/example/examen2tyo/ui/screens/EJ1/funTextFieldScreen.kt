@@ -50,8 +50,10 @@ fun TextoYBoton(
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TextFieldScreen(
+    texto: String,
     onUpdateNumContadores: (Int) -> Unit,
-    onTextFieldChange: (String) -> Unit,) {
+    onTextFieldChange: (String) -> Unit,
+    modifier: Modifier = Modifier) {
 
 
     val context = LocalContext.current
@@ -62,19 +64,18 @@ fun TextFieldScreen(
     ) {
 
         OutlinedTextField(
-            value = ContadoresViewModel.texto,
+            value = texto,
             onValueChange = { onTextFieldChange(it) },
             label = { Text(text = "Numero de contadores") }
         )
 
         Button(
             onClick = {
-                if (ContadoresViewModel.texto.isNotBlank()) {
-                    onUpdateNumContadores(ContadoresViewModel.texto.toIntOrNull() ?: 0)
-                    ContadoresViewModel.onTextFieldChange("")
+                if (texto.isNotBlank()) {
+                    onUpdateNumContadores(texto.toIntOrNull() ?: 0)
+                    onTextFieldChange("")
                 } else
-                    Toast.makeText(context, " Debes introducir un número", Toast.LENGTH_SHORT)
-                        .show()
+                    Toast.makeText(context, " Debes introducir un número", Toast.LENGTH_SHORT).show()
             }) {
             Text(text = "Mostrar contadores")
         }

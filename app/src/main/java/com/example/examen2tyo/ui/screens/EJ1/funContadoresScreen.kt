@@ -17,21 +17,23 @@ import com.example.examen2tyo.ui.StateHolders.ContadoresViewModel
 
 
 @Composable
-fun ContadoresScreen() {
-
-    val ContadoresViewModel : ContadoresViewModel = viewModel()
-
+fun ContadoresScreen(
+        contador: Int,
+        onDecreaseCounter: () -> Unit,
+        onIncreaseCounter: () -> Unit,
+        modifier: Modifier = Modifier
+) {
 
             Row(
                 Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceEvenly,
 
             ){
-                Button(onClick = { ContadoresViewModel.onDecreaseCounter()}) {
+                Button(onClick = {onDecreaseCounter()}) {
                     Text(text = "Decrementar")
                 }
-                Text(text = "${ContadoresViewModel.contador}")
-                Button(onClick = { ContadoresViewModel.onIncreaseCounter()}) {
+                Text(text = "$contador")
+                Button(onClick = {onIncreaseCounter()}) {
                     Text(text = "Incrementar")
                 }
             }
