@@ -1,5 +1,6 @@
 package com.example.examen2tyo.ui.screens.EJ1
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Button
@@ -13,9 +14,10 @@ import androidx.compose.ui.Modifier
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.examen2tyo.ui.StateHolders.ContadoresViewModel
 
+@SuppressLint("SuspiciousIndentation")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun TextFieldScreen(onUpdateNumContadores: (Int) -> Unit) {
+fun TextFieldScreen() {
 
     val ContadoresViewModel : ContadoresViewModel = viewModel()
 
@@ -26,14 +28,14 @@ fun TextFieldScreen(onUpdateNumContadores: (Int) -> Unit) {
 //solucionar paddingvalues
         OutlinedTextField(
             value = ContadoresViewModel.texto,
-            onValueChange = { ContadoresViewModel.onTextFieldChange() },
+            onValueChange = { ContadoresViewModel.onTextFieldChange(it) },
             label={ Text(text = "Numero de contadores")}
         )
 
         Button(
             onClick = {
             if (ContadoresViewModel.texto.isNotBlank())
-                onUpdateNumContadores(ContadoresViewModel.texto.toIntOrNull()?:0)
+                ContadoresViewModel.onUpdateNumContadores(ContadoresViewModel.texto.toIntOrNull()?:0)
                 ContadoresViewModel.texto==""
             }) {
             Text(text = "Mostrar contadores")

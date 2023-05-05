@@ -17,9 +17,12 @@ class ContadoresViewModel: ViewModel() {
     private var _contador by mutableStateOf(0)
     val contador get() = _contador
 
-    fun onTextFieldChange(){
-
+    fun onTextFieldChange(newText : String) {
+        _texto = newText
     }
 
+    fun onUpdateNumContadores(newNumber : Int) {
+        _numContadores = newNumber
+    }
 
 }

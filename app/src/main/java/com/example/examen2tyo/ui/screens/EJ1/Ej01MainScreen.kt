@@ -38,7 +38,7 @@ fun Screen1() {
                         IconButton(onClick = { ContadoresViewModel.numContadores==0 }) {
                             Icon(
                                 imageVector = Icons.Filled.Refresh,
-                                contentDescription = ""
+                                contentDescription = "Go back to main screen"
                             )
                         }
                     }
@@ -55,7 +55,7 @@ fun Screen1() {
         ) {
             if (ContadoresViewModel.numContadores==0){
 
-                TextFieldScreen( onUpdateNumContadores= {ContadoresViewModel.numContadores==it})
+                TextFieldScreen( onUpdateNumContadores= {})
         } else {
             repeat(ContadoresViewModel.numContadores) {
                 ContadoresScreen()
