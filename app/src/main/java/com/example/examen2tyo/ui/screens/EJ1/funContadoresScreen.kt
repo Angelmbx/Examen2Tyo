@@ -21,10 +21,7 @@ fun ContadoresScreen() {
 
     val ContadoresViewModel : ContadoresViewModel = viewModel()
 
-    Column(
-        Modifier.fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
+
             Row(
                 Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceEvenly,
@@ -41,4 +38,4 @@ fun ContadoresScreen() {
 
 
     }
-}
+

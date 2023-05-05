@@ -17,32 +17,64 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.examen2tyo.ui.StateHolders.ContadoresViewModel
 
 
-@SuppressLint("SuspiciousIndentation")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun TextFieldScreen() {
+fun TextoYBoton(
+    text: String,
+    onValueChangeTextField: (String) -> Unit,
+    onClick: (String) -> Unit,
+) {
 
-    val ContadoresViewModel : ContadoresViewModel = viewModel()
+
     val context = LocalContext.current
 
     Column(
         Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-//solucionar paddingvalues
+
+        OutlinedTextField(
+            value = text,
+            onValueChange = {onValueChangeTextField(it)},
+            label = { Text(text = "Numero de contadores") }
+        )
+
+        Button(
+            onClick = {onClick(text)}) {
+            Text(text = "Mostrar contadores")
+        }
+
+    }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun TextFieldScreen(
+    onUpdateNumContadores: (Int) -> Unit,
+    onTextFieldChange: (String) -> Unit,) {
+
+
+    val context = LocalContext.current
+
+    Column(
+        Modifier.fillMaxSize(),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+
         OutlinedTextField(
             value = ContadoresViewModel.texto,
-            onValueChange = { ContadoresViewModel.onTextFieldChange(it) },
-            label={ Text(text = "Numero de contadores")}
+            onValueChange = { onTextFieldChange(it) },
+            label = { Text(text = "Numero de contadores") }
         )
 
         Button(
             onClick = {
-            if (ContadoresViewModel.texto.isNotBlank()) {
-                ContadoresViewModel.onUpdateNumContadores(ContadoresViewModel.texto.toIntOrNull() ?: 0) //error?
-                ContadoresViewModel.texto == ""
-            } else
-                Toast.makeText(context," Debes introducir un número",Toast.LENGTH_SHORT).show()
+                if (ContadoresViewModel.texto.isNotBlank()) {
+                    onUpdateNumContadores(ContadoresViewModel.texto.toIntOrNull() ?: 0)
+                    ContadoresViewModel.onTextFieldChange("")
+                } else
+                    Toast.makeText(context, " Debes introducir un número", Toast.LENGTH_SHORT)
+                        .show()
             }) {
             Text(text = "Mostrar contadores")
         }

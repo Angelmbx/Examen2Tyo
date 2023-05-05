@@ -1,5 +1,6 @@
 package com.example.examen2tyo.ui.StateHolders
 
+import android.util.Log
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -21,7 +22,7 @@ class ContadoresViewModel: ViewModel() {
         _texto = newText
     }
 
-    fun onUpdateNumContadores(newNumber : Int) { //puede estar aqui el error?
+    fun onUpdateNumContadores(newNumber : Int) {
         _numContadores = newNumber
     }
 

@@ -1,6 +1,7 @@
 package com.example.examen2tyo.ui.screens.EJ1
 
 import android.annotation.SuppressLint
+import android.util.Log
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -27,13 +28,13 @@ import com.example.examen2tyo.ui.StateHolders.ContadoresViewModel
 @Composable
 fun Screen1() {
 
-    val ContadoresViewModel : ContadoresViewModel = viewModel()
+    val ContadoresViewModel: ContadoresViewModel = viewModel()
 
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text(text = stringResource(id = R.string.app_name))},
-                actions= {
+                title = { Text(text = stringResource(id = R.string.app_name)) },
+                actions = {
                     if (ContadoresViewModel.numContadores != 0) {
                         IconButton(onClick = { ContadoresViewModel.onRefreshButton() }) {
                             Icon(
@@ -45,7 +46,7 @@ fun Screen1() {
                 })
         }
     )
-    {padding->
+    { padding ->
 
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
@@ -53,16 +54,18 @@ fun Screen1() {
                 .fillMaxSize()
                 .padding(paddingValues = padding),
         ) {
-            if (ContadoresViewModel.numContadores==0){
+            if (ContadoresViewModel.numContadores == 0) {
+                TextFieldScreen(
+                    onTextFieldChange = {ContadoresViewModel.onTextFieldChange(it)},
+                    onUpdateNumContadores = ,
+                )
+            } else {
+                repeat(ContadoresViewModel.numContadores) {
+                    ContadoresScreen()
+                }
 
-                TextFieldScreen()
-        } else {
-            repeat(ContadoresViewModel.numContadores) {
-                ContadoresScreen()
             }
-
-            }
-    }
+        }
     }
 }
 
