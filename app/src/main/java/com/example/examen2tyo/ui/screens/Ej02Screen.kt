@@ -1,4 +1,4 @@
-package com.example.examen2tyo.screens
+package com.example.examen2tyo.ui.screens
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview

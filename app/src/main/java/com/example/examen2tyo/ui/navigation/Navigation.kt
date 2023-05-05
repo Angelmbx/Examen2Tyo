@@ -1,12 +1,12 @@
-package com.example.examen2tyo.navigation
+package com.example.examen2tyo.ui.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.examen2tyo.screens.MainScreen
-import com.example.examen2tyo.screens.EJ1.Screen1
-import com.example.examen2tyo.screens.Screen2
+import com.example.examen2tyo.ui.screens.MainScreen
+import com.example.examen2tyo.ui.screens.EJ1.Screen1
+import com.example.examen2tyo.ui.screens.Screen2
 
 @Composable
 fun Navigation() {

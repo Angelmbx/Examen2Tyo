@@ -1,4 +1,4 @@
-package com.example.examen2tyo.screens.EJ1
+package com.example.examen2tyo.ui.screens.EJ1
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.Column
@@ -13,12 +13,13 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.*
-import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.examen2tyo.R
+import com.example.examen2tyo.ui.StateHolders.ContadoresViewModel
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
@@ -26,15 +27,15 @@ import com.example.examen2tyo.R
 @Composable
 fun Screen1() {
 
-    var numContadores by rememberSaveable { mutableStateOf(0) }
+    val ContadoresViewModel : ContadoresViewModel = viewModel()
 
     Scaffold(
         topBar = {
             TopAppBar(
                 title = { Text(text = stringResource(id = R.string.app_name))},
                 actions= {
-                    if (numContadores != 0) {
-                        IconButton(onClick = { numContadores=0 }) {
+                    if (ContadoresViewModel.numContadores != 0) {
+                        IconButton(onClick = { ContadoresViewModel.numContadores==0 }) {
                             Icon(
                                 imageVector = Icons.Filled.Refresh,
                                 contentDescription = ""
@@ -52,11 +53,14 @@ fun Screen1() {
                 .fillMaxSize()
                 .padding(paddingValues = padding),
         ) {
-            if (numContadores==0){
+            if (ContadoresViewModel.numContadores==0){
 
-                Ej1TextFieldScreen(/*la creo aquí, se la paso a esta funcion?*/ onUpdateNumContadores= {numContadores=it})
+                TextFieldScreen( onUpdateNumContadores= {ContadoresViewModel.numContadores==it})
         } else {
-                Ej1ContadoresScreen(numContadores)
+            repeat(ContadoresViewModel.numContadores) {
+                ContadoresScreen()
+            }
+
             }
     }
     }

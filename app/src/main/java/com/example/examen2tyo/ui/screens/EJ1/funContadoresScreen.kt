@@ -1,4 +1,4 @@
-package com.example.examen2tyo.screens.EJ1
+package com.example.examen2tyo.ui.screens.EJ1
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -11,36 +11,33 @@ import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.tooling.preview.PreviewParameter
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.examen2tyo.ui.StateHolders.ContadoresViewModel
 
 
 @Composable
-fun Ej1ContadoresScreen(numContadores: Int) {
+fun ContadoresScreen() {
 
-    var contador by rememberSaveable { mutableStateOf(0)}
-
+    val ContadoresViewModel : ContadoresViewModel = viewModel()
 
     Column(
         Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-
-        for (i in 0 until numContadores) {
-
             Row(
                 Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.Center,
+                horizontalArrangement = Arrangement.SpaceEvenly,
+
             ){
-                Button(onClick = { contador--}) {
+                Button(onClick = { ContadoresViewModel.contador-1}) {
                     Text(text = "Decrementar")
                 }
-                Text(text = "$contador")
-                Button(onClick = { contador++}) {
+                Text(text = "${ContadoresViewModel.contador}")
+                Button(onClick = { ContadoresViewModel.contador+1}) {
                     Text(text = "Incrementar")
                 }
             }
 
-        }
+
     }
 }

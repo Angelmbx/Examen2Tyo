@@ -1,4 +1,4 @@
-package com.example.examen2tyo.navigation
+package com.example.examen2tyo.ui.navigation
 
 sealed class Screens(val route: String){
 

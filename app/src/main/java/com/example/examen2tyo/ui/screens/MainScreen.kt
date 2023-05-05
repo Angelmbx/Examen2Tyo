@@ -1,4 +1,4 @@
-package com.example.examen2tyo.screens
+package com.example.examen2tyo.ui.screens
 
 import android.content.res.Configuration
 import androidx.compose.foundation.layout.Arrangement
@@ -12,7 +12,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.navigation.NavController
-import com.example.examen2tyo.navigation.Screens
+import com.example.examen2tyo.ui.navigation.Screens
 
 
 @Composable

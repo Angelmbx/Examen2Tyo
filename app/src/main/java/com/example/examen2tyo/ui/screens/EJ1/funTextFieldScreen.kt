@@ -1,4 +1,4 @@
-package com.example.examen2tyo.screens.EJ1
+package com.example.examen2tyo.ui.screens.EJ1
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -10,13 +10,14 @@ import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.examen2tyo.ui.StateHolders.ContadoresViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun Ej1TextFieldScreen(onUpdateNumContadores: (Int) -> Unit) {
+fun TextFieldScreen(onUpdateNumContadores: (Int) -> Unit) {
 
-    var texto by rememberSaveable { mutableStateOf("") }
-
+    val ContadoresViewModel : ContadoresViewModel = viewModel()
 
     Column(
         Modifier.fillMaxSize(),
@@ -24,16 +25,16 @@ fun Ej1TextFieldScreen(onUpdateNumContadores: (Int) -> Unit) {
     ) {
 //solucionar paddingvalues
         OutlinedTextField(
-            value = texto,
-            onValueChange = {texto = it},
+            value = ContadoresViewModel.texto,
+            onValueChange = { ContadoresViewModel.onTextFieldChange() },
             label={ Text(text = "Numero de contadores")}
         )
 
         Button(
             onClick = {
-            if (texto.isNotBlank())
-                onUpdateNumContadores(texto.toIntOrNull()?:0)
-                texto=""
+            if (ContadoresViewModel.texto.isNotBlank())
+                onUpdateNumContadores(ContadoresViewModel.texto.toIntOrNull()?:0)
+                ContadoresViewModel.texto==""
             }) {
             Text(text = "Mostrar contadores")
         }
